@@ -47,3 +47,32 @@
   - **Failure: Database Error:** 
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
+
+
+      # API Documentation: Show Users
+
+## Endpoint Summary
+
+### 3. Show Users
+- **Method:** `GET`
+- **Endpoint:** `/user/show`
+- **Description:** Retrieves a list of all users. Requires an authorization token for access.
+- **Request Headers:** 
+  - `Authorization: Bearer <token>`
+  - `Content-Type: application/json`
+- **Request Body Parameters:** None
+
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "token": "<new_token>", "data": [ { "user_id": "<user_id>", "username": "<username>" }, ... ] }`
+  - **Failure: Missing Authorization Header:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Authorization header missing" } }`
+  - **Failure: Invalid or Expired Token:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: Database Error:** 
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "message": "<error message>" }`
+
