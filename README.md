@@ -187,5 +187,35 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
+      # API Documentation: Show Authors
+
+## Endpoint Summary
+
+### 7. Show All Authors
+- **Method:** `GET`
+- **Endpoint:** `/author/show`
+- **Description:** Retrieves a list of all registered authors. Requires a valid authorization token.
+- **Request Headers:** 
+  - `Authorization`: Bearer token required for access.
+
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "token": "<new_token>", "data": [ { "author_id": "<id>", "name": "<name>" }, ... ] }`
+  - **Failure: Missing Authorization Header:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Authorization header missing" } }`
+  - **Failure: Invalid or Expired Token:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: No Authors Found:** 
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "fail", "message": "No authors found" }`
+  - **Failure: Database Error:** 
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "message": "<error message>" }`
+
+
+
 
 
