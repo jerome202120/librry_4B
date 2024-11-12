@@ -284,6 +284,43 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
+    # API Documentation: Register Book
+
+## Endpoint Summary
+
+### 10. Register Book
+- **Method:** `POST`
+- **Endpoint:** `/book/register`
+- **Description:** Registers a new book in the database, linking it to a specified author. Requires a valid authorization token.
+- **Request Headers:**
+  - `Content-Type: application/json`
+- **Request Body Parameters:**
+  - `token` (string): Authorization token for the user.
+  - `title` (string): Title of the book.
+  - `author_id` (integer): ID of the author of the book.
+
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "token": "<new_token>", "data": null }`
+  - **Failure: Token Missing:**
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Token missing in payload" } }`
+  - **Failure: Title or Author ID Missing:**
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "Title or Author ID missing in payload" } }`
+  - **Failure: Invalid or Expired Token:**
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: Book Already Exists:**
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "Book already exists" } }`
+  - **Failure: Database Error:**
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
+
+
+
 
 
 
