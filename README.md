@@ -348,6 +348,39 @@
     - **Body:** `{ "status": "fail", "message": "<error message>" }`
 
 
+    # API Documentation: Update Book
+
+## Endpoint Summary
+
+### 12. Update Book
+- **Method:** `PUT`
+- **Endpoint:** `/book/update`
+- **Description:** Updates an existing book's title and author. Requires a valid authorization token and the book ID in the payload.
+- **Request Payload:**
+  - JSON body containing:
+    - `token`: The authorization token (required)
+    - `book_id`: The ID of the book to update (required)
+    - `title`: The new title for the book (required)
+    - `author_id`: The new author ID for the book (required)
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "token": "<new_token>", "data": null }`
+  - **Failure: Token Missing in Payload:**
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Token missing in payload" } }`
+  - **Failure: Book ID Missing in Payload:**
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "Book ID missing in payload" } }`
+  - **Failure: Invalid or Expired Token:**
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: Database Error:**
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
+
+
+
 
 
 
