@@ -413,6 +413,41 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
+    # API Documentation: Register Book Author Relationship
+
+## Endpoint Summary
+
+### 14. Register Book-Author Relationship
+- **Method:** `POST`
+- **Endpoint:** `/book_author/register`
+- **Description:** Registers a relationship between a book and an author. The payload must include the book ID, author ID, and a valid authorization token.
+- **Request Payload:**
+  - JSON body containing:
+    - `token`: The authorization token (required)
+    - `book_id`: The ID of the book (required)
+    - `author_id`: The ID of the author (required)
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "token": "<new_token>", "data": null }`
+  - **Failure: Token Missing in Payload:**
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Token missing in payload" } }`
+  - **Failure: Book ID or Author ID Missing in Payload:**
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "Book ID or Author ID missing in payload" } }`
+  - **Failure: Invalid or Expired Token:**
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: Book Author Relationship Already Exists:**
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "Book author relationship already exists" } }`
+  - **Failure: Database Error:**
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
+
+
+
 
 
 
