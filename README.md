@@ -114,3 +114,42 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
+      # API Documentation: Delete User
+
+## Endpoint Summary
+
+### 5. Delete User
+- **Method:** `DELETE`
+- **Endpoint:** `/user/delete`
+- **Description:** Deletes a user account. Requires a valid authorization token, and the user can only delete their own account.
+- **Request Headers:** 
+  - `Content-Type: application/json`
+- **Request Body Parameters:**
+  - `token` (string): Authorization token for the user.
+  - `user_id` (integer): The ID of the user to be deleted.
+
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "data": null }`
+  - **Failure: Invalid JSON Payload:** 
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid JSON payload" } }`
+  - **Failure: Missing Token:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Token missing in payload" } }`
+  - **Failure: Missing User ID:** 
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "User ID missing in payload" } }`
+  - **Failure: Invalid or Expired Token:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: Unauthorized Action:** 
+    - **Status:** `403 Forbidden`
+    - **Body:** `{ "status": "fail", "data": { "title": "Unauthorized action" } }`
+  - **Failure: Database Error:** 
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
+
+
+
