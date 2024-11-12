@@ -216,6 +216,40 @@
     - **Body:** `{ "status": "fail", "message": "<error message>" }`
 
 
+      # API Documentation: Update Author
+
+## Endpoint Summary
+
+### 8. Update Author
+- **Method:** `PUT`
+- **Endpoint:** `/author/update`
+- **Description:** Updates an author’s name based on the provided author ID. Requires a valid authorization token.
+- **Request Headers:** 
+  - `Content-Type: application/json`
+- **Request Body Parameters:**
+  - `token` (string): Authorization token for the user.
+  - `author_id` (integer): ID of the author to update.
+  - `name` (string): New name of the author.
+
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "token": "<new_token>", "data": null }`
+  - **Failure: Missing Token:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Token missing in payload" } }`
+  - **Failure: Missing Author ID:** 
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "Author ID missing in payload" } }`
+  - **Failure: Invalid or Expired Token:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: Database Error:** 
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
+
+
+
 
 
 
