@@ -23,11 +23,6 @@
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
-
-# API Documentation: User Authentication
-
-## Endpoint Summary
-
 ### 2. Authenticate User
 - **Method:** `POST`
 - **Endpoint:** `/user/auth`
@@ -47,11 +42,6 @@
   - **Failure: Database Error:** 
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
-
-
-      # API Documentation: Show Users
-
-## Endpoint Summary
 
 ### 3. Show Users
 - **Method:** `GET`
@@ -76,10 +66,6 @@
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "message": "<error message>" }`
 
-
-      # API Documentation: Update User
-
-## Endpoint Summary
 
 ### 4. Update User
 - **Method:** `PUT`
@@ -113,10 +99,6 @@
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
-
-      # API Documentation: Delete User
-
-## Endpoint Summary
 
 ### 5. Delete User
 - **Method:** `DELETE`
@@ -152,10 +134,6 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
-      # API Documentation: Register Author
-
-## Endpoint Summary
-
 ### 6. Register a New Author
 - **Method:** `POST`
 - **Endpoint:** `/author/register`
@@ -187,10 +165,6 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
-      # API Documentation: Show Authors
-
-## Endpoint Summary
-
 ### 7. Show All Authors
 - **Method:** `GET`
 - **Endpoint:** `/author/show`
@@ -215,10 +189,6 @@
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "message": "<error message>" }`
 
-
-      # API Documentation: Update Author
-
-## Endpoint Summary
 
 ### 8. Update Author
 - **Method:** `PUT`
@@ -248,10 +218,6 @@
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
-
-      # API Documentation: Delete Author
-
-## Endpoint Summary
 
 ### 9. Delete Author
 - **Method:** `DELETE`
@@ -283,10 +249,6 @@
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
-
-    # API Documentation: Register Book
-
-## Endpoint Summary
 
 ### 10. Register Book
 - **Method:** `POST`
@@ -320,10 +282,6 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
-    # API Documentation: Show Books
-
-## Endpoint Summary
-
 ### 11. Show Books
 - **Method:** `GET`
 - **Endpoint:** `/book/show`
@@ -348,9 +306,6 @@
     - **Body:** `{ "status": "fail", "message": "<error message>" }`
 
 
-    # API Documentation: Update Book
-
-## Endpoint Summary
 
 ### 12. Update Book
 - **Method:** `PUT`
@@ -380,10 +335,6 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
-    # API Documentation: Delete Book
-
-## Endpoint Summary
-
 ### 13. Delete Book
 - **Method:** `DELETE`
 - **Endpoint:** `/book/delete`
@@ -412,10 +363,6 @@
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
-
-    # API Documentation: Register Book Author Relationship
-
-## Endpoint Summary
 
 ### 14. Register Book-Author Relationship
 - **Method:** `POST`
@@ -511,7 +458,7 @@
       ```
 
 
-      ### 16. Delete Book-Author Relationship
+### 16. Delete Book-Author Relationship
 - **Method:** DELETE
 - **Endpoint:** /book_author/delete
 - **Description:** Deletes a book-author relationship from the database based on the provided `collection_id`. The payload must include the `collection_id` and a valid authorization token.
