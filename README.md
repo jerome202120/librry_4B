@@ -511,6 +511,70 @@
       ```
 
 
+      ### 16. Delete Book-Author Relationship
+- **Method:** DELETE
+- **Endpoint:** /book_author/delete
+- **Description:** Deletes a book-author relationship from the database based on the provided `collection_id`. The payload must include the `collection_id` and a valid authorization token.
+- **Request Payload:**
+  - JSON body containing:
+    - `token`: The authorization token (required)
+    - `collection_id`: The ID of the book-author relationship to delete (required)
+
+- **Responses:**
+  - **Success:**
+    - **Status:** 200 OK
+    - **Body:**
+      ```json
+      { 
+        "status": "success", 
+        "token": "<new_token>", 
+        "data": null 
+      }
+      ```
+
+  - **Failure: Token Missing in Payload:**
+    - **Status:** 401 Unauthorized
+    - **Body:**
+      ```json
+      {
+        "status": "fail",
+        "data": { "title": "Token missing in payload" }
+      }
+      ```
+
+  - **Failure: Collection ID Missing in Payload:**
+    - **Status:** 400 Bad Request
+    - **Body:**
+      ```json
+      {
+        "status": "fail",
+        "data": { "title": "Collection ID missing in payload" }
+      }
+      ```
+
+  - **Failure: Invalid or Expired Token:**
+    - **Status:** 401 Unauthorized
+    - **Body:**
+      ```json
+      {
+        "status": "fail",
+        "data": { "title": "Invalid or expired token" }
+      }
+      ```
+
+  - **Failure: Database Error:**
+    - **Status:** 500 Internal Server Error
+    - **Body:**
+      ```json
+      {
+        "status": "fail",
+        "data": { "title": "<error message>" }
+      }
+      ```
+
+
+
+
 
 
 
