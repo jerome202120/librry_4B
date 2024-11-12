@@ -320,6 +320,35 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
+    # API Documentation: Show Books
+
+## Endpoint Summary
+
+### 11. Show Books
+- **Method:** `GET`
+- **Endpoint:** `/book/show`
+- **Description:** Fetches a list of all books from the database. Requires a valid authorization token.
+- **Request Headers:**
+  - `Authorization: Bearer <token>` (Authorization header containing the bearer token)
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "token": "<new_token>", "data": [{ "book_id": 1, "title": "Book Title", "author_id": 2 }, ...] }`
+  - **Failure: Authorization Header Missing:**
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Authorization header missing" } }`
+  - **Failure: Invalid or Expired Token:**
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: No Books Found:**
+    - **Status:** `404 Not Found`
+    - **Body:** `{ "status": "fail", "message": "No books found" }`
+  - **Failure: Database Error:**
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "message": "<error message>" }`
+
+
+
 
 
 
