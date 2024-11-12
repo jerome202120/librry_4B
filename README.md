@@ -6,3 +6,4 @@
  #### Register User
  - URL: /users/register
  - Method: POST
+ - Description: Registers a new user in the system, saving their username and password in the database.
