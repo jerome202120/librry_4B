@@ -445,6 +445,72 @@
   - **Failure: Database Error:**
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
+   
+
+    ### 15. Update Book-Author Relationship
+- **Method:** PUT
+- **Endpoint:** /book_author/update
+- **Description:** Updates a book-author relationship in the database based on the provided `collection_id`. The payload must include the `collection_id`, `book_id`, `author_id`, and a valid authorization token.
+- **Request Payload:**
+  - JSON body containing:
+    - `token`: The authorization token (required)
+    - `collection_id`: The ID of the book-author relationship to update (required)
+    - `book_id`: The ID of the book (required)
+    - `author_id`: The ID of the author (required)
+
+- **Responses:**
+  - **Success:**
+    - **Status:** 200 OK
+    - **Body:**
+      ```json
+      { 
+        "status": "success", 
+        "token": "<new_token>", 
+        "data": null 
+      }
+      ```
+
+  - **Failure: Token Missing in Payload:**
+    - **Status:** 401 Unauthorized
+    - **Body:**
+      ```json
+      {
+        "status": "fail",
+        "data": { "title": "Token missing in payload" }
+      }
+      ```
+
+  - **Failure: Collection ID Missing in Payload:**
+    - **Status:** 400 Bad Request
+    - **Body:**
+      ```json
+      {
+        "status": "fail",
+        "data": { "title": "Collection ID missing in payload" }
+      }
+      ```
+
+  - **Failure: Invalid or Expired Token:**
+    - **Status:** 401 Unauthorized
+    - **Body:**
+      ```json
+      {
+        "status": "fail",
+        "data": { "title": "Invalid or expired token" }
+      }
+      ```
+
+  - **Failure: Database Error:**
+    - **Status:** 500 Internal Server Error
+    - **Body:**
+      ```json
+      {
+        "status": "fail",
+        "data": { "title": "<error message>" }
+      }
+      ```
+
+
 
 
 
