@@ -380,6 +380,40 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
+    # API Documentation: Delete Book
+
+## Endpoint Summary
+
+### 13. Delete Book
+- **Method:** `DELETE`
+- **Endpoint:** `/book/delete`
+- **Description:** Deletes an existing book by its ID. Requires a valid authorization token and the book ID in the payload.
+- **Request Payload:**
+  - JSON body containing:
+    - `token`: The authorization token (required)
+    - `book_id`: The ID of the book to delete (required)
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "token": "<new_token>", "data": null }`
+  - **Failure: Invalid JSON Payload:**
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid JSON payload" } }`
+  - **Failure: Token Missing in Payload:**
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Token missing in payload" } }`
+  - **Failure: Book ID Missing in Payload:**
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "Book ID missing in payload" } }`
+  - **Failure: Invalid or Expired Token:**
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: Database Error:**
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
+
+
+
 
 
 
