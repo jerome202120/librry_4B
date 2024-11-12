@@ -76,3 +76,41 @@
     - **Status:** `500 Internal Server Error`
     - **Body:** `{ "status": "fail", "message": "<error message>" }`
 
+
+      # API Documentation: Update User
+
+## Endpoint Summary
+
+### 4. Update User
+- **Method:** `PUT`
+- **Endpoint:** `/user/update`
+- **Description:** Updates the user's information, including username and password. Requires a valid authorization token, and the user can only update their own information.
+- **Request Headers:** 
+  - `Content-Type: application/json`
+- **Request Body Parameters:**
+  - `token` (string): Authorization token for the user.
+  - `user_id` (integer): The ID of the user to be updated.
+  - `username` (string): New username for the user.
+  - `password` (string): New password for the user.
+
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "token": "<new_token>", "data": null }`
+  - **Failure: Missing Token:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Token missing in payload" } }`
+  - **Failure: Missing User ID:** 
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "User ID missing in payload" } }`
+  - **Failure: Invalid or Expired Token:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: Unauthorized Action:** 
+    - **Status:** `403 Forbidden`
+    - **Body:** `{ "status": "fail", "data": { "title": "Unauthorized action" } }`
+  - **Failure: Database Error:** 
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
+
+
