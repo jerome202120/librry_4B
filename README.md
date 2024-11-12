@@ -152,4 +152,40 @@
     - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
 
 
+      # API Documentation: Register Author
+
+## Endpoint Summary
+
+### 6. Register a New Author
+- **Method:** `POST`
+- **Endpoint:** `/author/register`
+- **Description:** Registers a new author by checking if the author's name is unique and, if so, adds the author to the database. Requires a valid authorization token.
+- **Request Headers:** 
+  - `Content-Type: application/json`
+- **Request Body Parameters:**
+  - `token` (string): Authorization token for the user.
+  - `name` (string): Name of the author to be registered.
+
+- **Responses:**
+  - **Success:**
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "success", "token": "<new_token>", "data": null }`
+  - **Failure: Missing Token:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Token missing in payload" } }`
+  - **Failure: Missing Author Name:** 
+    - **Status:** `400 Bad Request`
+    - **Body:** `{ "status": "fail", "data": { "title": "Name missing in payload" } }`
+  - **Failure: Invalid or Expired Token:** 
+    - **Status:** `401 Unauthorized`
+    - **Body:** `{ "status": "fail", "data": { "title": "Invalid or expired token" } }`
+  - **Failure: Author Name Already Taken:** 
+    - **Status:** `200 OK`
+    - **Body:** `{ "status": "fail", "data": { "title": "Author name already taken" } }`
+  - **Failure: Database Error:** 
+    - **Status:** `500 Internal Server Error`
+    - **Body:** `{ "status": "fail", "data": { "title": "<error message>" } }`
+
+
+
 
